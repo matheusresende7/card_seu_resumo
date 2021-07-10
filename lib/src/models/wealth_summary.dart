@@ -1,11 +1,11 @@
 class WealthSummary {
 
-  double total;
-  int id;
-  bool hasHistory;
-  double cdi;
-  double gain;
-  double profitability;
+  double? total;
+  int? id;
+  bool? hasHistory;
+  double? cdi;
+  double? gain;
+  double? profitability;
 
   WealthSummary({
     this.total,

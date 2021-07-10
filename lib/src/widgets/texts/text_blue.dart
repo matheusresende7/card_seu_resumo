@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class TextBlue extends StatelessWidget {
 
-  final String text;
+  final String? text;
 
   TextBlue ({
     this.text,
@@ -13,7 +13,7 @@ class TextBlue extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Text(
-      this.text,
+      this.text ?? '',
       style: TextStyle (
           color: Theme.of(context).primaryColor,
           fontSize: TextSizes.xLarge,

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class OutlinedButtonDefault extends StatelessWidget {
 
-  final String text;
-  final VoidCallback onPressed;
+  final String? text;
+  final VoidCallback? onPressed;
 
   OutlinedButtonDefault ({
     this.text,
@@ -16,7 +16,7 @@ class OutlinedButtonDefault extends StatelessWidget {
 
     return OutlinedButton(
       child: Text(
-        this.text,
+        this.text ?? '',
         style: TextStyle (
           color: Theme.of(context).primaryColor,
           fontSize: TextSizes.large,

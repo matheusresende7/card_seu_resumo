@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class TextGrey extends StatelessWidget {
 
-  final String text;
+  final String? text;
 
   TextGrey ({
     this.text,
@@ -13,7 +13,7 @@ class TextGrey extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Text(
-      this.text,
+      this.text ?? '',
       style: TextStyle (
           color: Color(0xff8b8d9c),
           fontSize: TextSizes.medium,

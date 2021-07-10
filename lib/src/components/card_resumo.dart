@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 
 class CardResumo extends StatelessWidget {
 
-  final String total;
-  final String cdi;
-  final String gain;
-  final String profitability;
+  final String? total;
+  final String? cdi;
+  final String? gain;
+  final String? profitability;
 
   CardResumo ({
     this.total,
@@ -62,7 +62,7 @@ class CardResumo extends StatelessWidget {
                     children: [
                       TextGrey(text: Strings.valorInvestido,),
                       SizedBox(height: 10,),
-                      TextBlue(text: this.total),
+                      TextBlue(text: this.total ?? '0'),
                     ],
                   ),
 
@@ -73,7 +73,7 @@ class CardResumo extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextGrey(text: Strings.rentabilidadeMes,),
-                          TextBlue(text: this.profitability),
+                          TextBlue(text: this.profitability ?? '0'),
                         ],
                       ),
 
@@ -83,7 +83,7 @@ class CardResumo extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextGrey(text: Strings.cdi,),
-                          TextBlue(text: this.cdi),
+                          TextBlue(text: this.cdi ?? '0'),
                         ],
                       ),
 
@@ -93,7 +93,7 @@ class CardResumo extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextGrey(text: Strings.ganhoMes,),
-                          TextBlue(text: this.gain),
+                          TextBlue(text: this.gain ?? '0'),
                         ],
                       ),
 
