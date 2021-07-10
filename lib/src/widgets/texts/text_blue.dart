@@ -20,6 +20,7 @@ class TextBlue extends StatelessWidget {
           fontWeight: FontWeight.w900,
           letterSpacing: 0.5,
       ),
+      textAlign: TextAlign.center,
     );
 
   }

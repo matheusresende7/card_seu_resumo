@@ -12,6 +12,12 @@ class Strings {
 
   ///Options
   static const String verMais = 'Ver mais';
+  static const String atualizar = 'Atualizar';
+
+  ///General
+  static const String carregandoDados = 'Carregando dados...';
+  static const String msgErroCarregamento = 'Não conseguimos carregar os dados como o esperado.\n\n'
+      'Por favor, atualize a página.';
 
 
 }
