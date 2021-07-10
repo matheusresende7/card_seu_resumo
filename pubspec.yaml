@@ -29,6 +29,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.3
   get: ^4.1.4
+  intl: ^0.17.0
   http: ^0.13.3
   hasura_connect: ^1.1.1
 
