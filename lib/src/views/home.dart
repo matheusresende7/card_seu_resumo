@@ -29,12 +29,7 @@ class Home extends StatelessWidget {
                     if(snapshot.hasError)
                       return ErrorScreen();
 
-                    else return CardResumo(
-                      total: '${_.formatoMilhares.format(_.total)}',
-                      cdi: _.cdi.toStringAsFixed(2).replaceAll('.', ',') + '%',
-                      gain: '${_.formatoMilhares.format(_.gain)}',
-                      profitability: _.profitability.toStringAsFixed(2).replaceAll('.', ',') + '%',
-                    );
+                    else return CardResumo(controller: _,);
 
                 }
               }

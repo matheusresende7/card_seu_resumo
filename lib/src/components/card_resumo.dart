@@ -1,4 +1,5 @@
 import 'package:card_seu_resumo/src/constants/strings.dart';
+import 'package:card_seu_resumo/src/controllers/home_controller.dart';
 import 'package:card_seu_resumo/src/widgets/buttons/outlined_button_default.dart';
 import 'package:card_seu_resumo/src/widgets/texts/text_blue.dart';
 import 'package:card_seu_resumo/src/widgets/texts/text_grey.dart';
@@ -6,16 +7,10 @@ import 'package:flutter/material.dart';
 
 class CardResumo extends StatelessWidget {
 
-  final String? total;
-  final String? cdi;
-  final String? gain;
-  final String? profitability;
+  final HomeController? controller;
 
   CardResumo ({
-    this.total,
-    this.cdi,
-    this.gain,
-    this.profitability,
+    this.controller,
   });
 
   @override
@@ -62,7 +57,7 @@ class CardResumo extends StatelessWidget {
                     children: [
                       TextGrey(text: Strings.valorInvestido,),
                       SizedBox(height: 10,),
-                      TextBlue(text: this.total ?? '0'),
+                      TextBlue(text: '${controller!.formatoMilhares.format(controller!.total)}'),
                     ],
                   ),
 
@@ -73,7 +68,7 @@ class CardResumo extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextGrey(text: Strings.rentabilidadeMes,),
-                          TextBlue(text: this.profitability ?? '0'),
+                          TextBlue(text: controller!.profitability.toStringAsFixed(2).replaceAll('.', ',') + '%'),
                         ],
                       ),
 
@@ -83,7 +78,7 @@ class CardResumo extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextGrey(text: Strings.cdi,),
-                          TextBlue(text: this.cdi ?? '0'),
+                          TextBlue(text: controller!.cdi.toStringAsFixed(2).replaceAll('.', ',') + '%'),
                         ],
                       ),
 
@@ -93,7 +88,7 @@ class CardResumo extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextGrey(text: Strings.ganhoMes,),
-                          TextBlue(text: this.gain ?? '0'),
+                          TextBlue(text: '${controller!.formatoMilhares.format(controller!.gain)}'),
                         ],
                       ),
 
