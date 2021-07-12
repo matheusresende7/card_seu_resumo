@@ -12,15 +12,15 @@ class HomeController extends GetxController {
 
 
   //*********************************OBTENDO API********************************
-  /*HasuraConnect conexao = HasuraConnect(
-      'https://harura-fliper-test.herokuapp.com/v1/graphql',
+  /*HasuraConnect conection = HasuraConnect(
+      Endpoints.url,
     headers: {
-        'content-type': 'application/json',
-        'x-hasura-admin-secret': 'fliperdevtest2020'
+        Endpoints.contentType: Endpoints.applicationJson,
+        Endpoints.xHasuraAdminSecret: Endpoints.fliperDevTest2020
     },
-  );
+  );*/
 
-  String variavelTabela = """
+  String wealthTable = """
     subscription {
       wealthSummary {
         cdi
@@ -33,21 +33,16 @@ class HomeController extends GetxController {
     }
   """;
 
-  @override
+  /*@override
   void onInit() {
     super.onInit();
 
-    print('inicio testeeeeeeeeeeeee');
-
-    var snapshot = conexao.subscription(variavelTabela);
+    var snapshot = conection.subscription(wealthTable);
 
     snapshot.listen ((data) {
-      print(data);
-      //print('${data['data']['wealthSummary'][1]}');
-      //print('${data['data']['wealthSummary'][1]['cdi'].toString()}');
+      print('${data['data']['wealthSummary'][1].toString()}');
+      print('${data['data']['wealthSummary'][1]['cdi'].toString()}');
     });
-
-    print('fim testeeeeeeeeeeeee');
 
   }*/
 
@@ -75,28 +70,6 @@ class HomeController extends GetxController {
     profitability = wealthSummary.profitability! / 10000;
 
   }
-
-
-  /*Future <WealthSummary> teste () async {
-    http.Response response = await http.get(Uri.parse(Endpoints.endpoint));
-    var json = jsonDecode(response.body)[1];
-    var wealthSummary = WealthSummary.fromJson(json);
-    return wealthSummary;
-  }
-
-  Future <void> teste1 () async {
-    final wealthSummary = await teste();
-    print('are babaaaaaaaaaaaaaaaaaaaaa ' + wealthSummary.id.toString());
-    print('are babaaaaaaaaaaaaaaaaaaaaa ' + wealthSummary.cdi.toString());
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    print('iniciooooooooooooooooo');
-    teste1();
-    print('fimmmmmmmmmmmmmmmmm');
-  }*/
 
 
 
