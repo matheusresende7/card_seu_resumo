@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:card_seu_resumo/src/models/wealth_summary.dart';
 import 'package:card_seu_resumo/src/shared/endpoints.dart';
 import 'package:get/get.dart';
 //import 'package:hasura_connect/hasura_connect.dart';
@@ -53,34 +54,49 @@ class HomeController extends GetxController {
 
 
   //*****************************FUTURE BUILDER*********************************
-  double total = 0.00;
-  int id = 0;
-  bool hasHistory = false;
-  double cdi = 0.00;
-  double gain = 0.00;
-  double profitability = 0.00;
+  double? total = 0.00;
+  int? id = 0;
+  bool? hasHistory = false;
+  double? cdi = 0.00;
+  double? gain = 0.00;
+  double? profitability = 0.00;
 
   Future <void> getApi () async {
 
     http.Response response = await http.get(Uri.parse(Endpoints.endpoint));
 
-    total = json.decode(response.body)[id]['total'];
-    cdi = json.decode(response.body)[id]['cdi'];
-    gain = json.decode(response.body)[id]['gain'];
-    profitability = json.decode(response.body)[id]['profitability'];
+    var json = jsonDecode(response.body)[id];
 
-    total = total * 100;
-    cdi = cdi / 10000;
-    gain = gain / 10;
-    profitability = profitability / 10000;
+    var wealthSummary = WealthSummary.fromJson(json);
 
-    print('status code é: ' + response.statusCode.toString());
-    print('total é: ' + total.toString());
-    print('cdi é: ' + cdi.toString());
-    print('gain é: ' + gain.toString());
-    print('profitability é: ' + profitability.toString());
+    total = wealthSummary.total! * 100;
+    cdi = wealthSummary.cdi! / 10000;
+    gain = wealthSummary.gain! / 10;
+    profitability = wealthSummary.profitability! / 10000;
 
   }
+
+
+  /*Future <WealthSummary> teste () async {
+    http.Response response = await http.get(Uri.parse(Endpoints.endpoint));
+    var json = jsonDecode(response.body)[1];
+    var wealthSummary = WealthSummary.fromJson(json);
+    return wealthSummary;
+  }
+
+  Future <void> teste1 () async {
+    final wealthSummary = await teste();
+    print('are babaaaaaaaaaaaaaaaaaaaaa ' + wealthSummary.id.toString());
+    print('are babaaaaaaaaaaaaaaaaaaaaa ' + wealthSummary.cdi.toString());
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    print('iniciooooooooooooooooo');
+    teste1();
+    print('fimmmmmmmmmmmmmmmmm');
+  }*/
 
 
 

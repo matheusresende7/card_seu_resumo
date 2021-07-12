@@ -1,11 +1,11 @@
 class WealthSummary {
 
-  double? total;
-  int? id;
-  bool? hasHistory;
-  double? cdi;
-  double? gain;
-  double? profitability;
+  final double? total;
+  final dynamic? id;
+  final bool? hasHistory;
+  final double? cdi;
+  final double? gain;
+  final double? profitability;
 
   WealthSummary({
     this.total,
@@ -16,24 +16,26 @@ class WealthSummary {
     this.profitability
   });
 
-  WealthSummary.fromJson(Map<String, dynamic> json) {
-    total = json['total'];
-    id = json['id'];
-    hasHistory = json['hasHistory'];
-    cdi = json['cdi'];
-    gain = json['gain'];
-    profitability = json['profitability'];
+  factory WealthSummary.fromJson(Map json) {
+    return WealthSummary(
+        total: json['total'],
+        id: json['id'],
+        hasHistory: json['hasHistory'],
+        cdi: json['cdi'],
+        gain: json['gain'],
+        profitability: json['profitability']
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['total'] = this.total;
-    data['id'] = this.id;
-    data['hasHistory'] = this.hasHistory;
-    data['cdi'] = this.cdi;
-    data['gain'] = this.gain;
-    data['profitability'] = this.profitability;
-    return data;
+  Map toJson() {
+    return {
+      total: total,
+      id: id,
+      hasHistory: hasHistory,
+      cdi: cdi,
+      gain: gain,
+      profitability: profitability,
+    };
   }
 
 }

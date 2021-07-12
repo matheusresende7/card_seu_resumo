@@ -68,7 +68,7 @@ class CardResumo extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextGrey(text: Strings.rentabilidadeMes,),
-                          TextBlue(text: controller!.profitability.toStringAsFixed(2).replaceAll('.', ',') + '%'),
+                          TextBlue(text: controller!.profitability!.toStringAsFixed(2).replaceAll('.', ',') + '%'),
                         ],
                       ),
 
@@ -78,7 +78,7 @@ class CardResumo extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextGrey(text: Strings.cdi,),
-                          TextBlue(text: controller!.cdi.toStringAsFixed(2).replaceAll('.', ',') + '%'),
+                          TextBlue(text: controller!.cdi!.toStringAsFixed(2).replaceAll('.', ',') + '%'),
                         ],
                       ),
 
