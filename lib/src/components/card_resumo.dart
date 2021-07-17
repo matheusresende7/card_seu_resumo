@@ -23,7 +23,9 @@ class CardResumo extends StatelessWidget {
       body: Center(
         child: Container(
           height: 420,
-          width: MediaQuery.of(context).size.width * 0.95,
+          width: MediaQuery.of(context).size.width < 400
+              ? MediaQuery.of(context).size.width * 0.95
+              : 400,
           child: Card (
             elevation: 2,
             shape: RoundedRectangleBorder(
