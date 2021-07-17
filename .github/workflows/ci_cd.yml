@@ -1,0 +1,112 @@
+name: CI/CD
+
+on:
+  push:
+    tags:
+      - v*
+  # nome da versao tem que ser com v minusculo. Ex: v1.0.5 ou v2.5.0
+
+jobs:
+
+  flutter_test:
+    name: Run Flutter analyze and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter format --dry-run --set-exit-if-changed lib/
+      - run: flutter format --dry-run --set-exit-if-changed test/
+      - run: flutter test --coverage
+      - run: flutter test --machine > test-results.json
+      - uses: dorny/test-reporter@v1.4.2
+        with:
+          name: test-results
+          path: test-results.json
+          reporter: flutter-json
+      - uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
+        with:
+          min_coverage: 10
+
+  build_ios:
+    name: Build Flutter (iOS)
+    needs: [flutter_test]
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter clean
+      - run: flutter build ios --release --no-codesign
+
+  build_appbundle:
+    name: Build Flutter (Android - AppBundle)
+    needs: [flutter_test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter clean
+      - run: flutter build appbundle
+      - name: Upload appbundle
+        uses: actions/upload-artifact@v2.1.4
+        with:
+          name: appbundle
+          path: build/app/outputs/bundle/release/app-release.aab
+
+  build_apk:
+    name: Build Flutter (Android - APK)
+    needs: [flutter_test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter clean
+      - run: flutter build apk --split-per-abi
+      - name: Upload apk
+        uses: actions/upload-artifact@v2.1.4
+        with:
+          name: apk
+          path: build/app/outputs/apk/release/app-armeabi-v7a-release.apk
+
+  build_and_deploy_firebase_hosting:
+    name: Build and Deploy Flutter (Web - Firebase Hosting)
+    needs: [flutter_test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.0.5'
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build web
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TESTES_GERAIS_FF1BF }}'
+          channelId: live
+          projectId: testes-gerais-ff1bf

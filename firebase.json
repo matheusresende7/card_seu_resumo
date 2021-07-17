@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "build/web",
+    "site": "card-seu-resumo",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
