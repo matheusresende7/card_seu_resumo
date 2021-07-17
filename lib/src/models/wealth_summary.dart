@@ -1,7 +1,7 @@
 class WealthSummary {
 
   final double? total;
-  final dynamic? id;
+  final dynamic id;
   final bool? hasHistory;
   final double? cdi;
   final double? gain;

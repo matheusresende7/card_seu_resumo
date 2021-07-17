@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class ErrorScreen extends StatelessWidget {
 
-  HomeController homeController = HomeController();
+  final homeController = HomeController();
 
   @override
   Widget build(BuildContext context) {
