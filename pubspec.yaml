@@ -31,7 +31,8 @@ dependencies:
   get: ^4.1.4
   intl: ^0.17.0
   http: ^0.13.3
-  hasura_connect: ^1.1.1
+  hasura_connect: ^3.0.4
+  shared_preferences: ^2.0.6
 
 dev_dependencies:
   flutter_test:
