@@ -2,7 +2,7 @@ class Strings {
 
 
   ///Title
-  static const String seuResumo = 'Seu resumo';
+  static const String seuResumo = 'Seu resumo1';
 
   ///Rates
   static const String valorInvestido = 'Valor investido';
