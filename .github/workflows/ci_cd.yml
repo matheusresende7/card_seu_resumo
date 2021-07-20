@@ -4,7 +4,6 @@ on:
   push:
     tags:
       - v*
-  # nome da versao tem que ser com v minusculo. Ex: v1.0.5 ou v2.5.0
 
 jobs:
 
