@@ -1,6 +1,20 @@
 # Descrição do projeto
 
-Esse é um projeto teste para consumo de Api com GraphQl e Hasura, desenvolvido em Flutter e Dart.<br/><br/>
+Esse é um projeto teste para consumo de Api com GraphQl e Hasura, desenvolvido em Flutter e Dart.
+
+
+### Development Features
+
+* Flutter - Dart - GetX
+* Mobile - Android - Web
+* Clean Archtecture - Clean Code
+* Widget Tests
+* Pipeline CI/CD - Github Actions
+* MVC
+* API - Postman - GraphQl
+* Git - Github
+* Firebase Hosting
+<br/><br/>
 
 
 ## Link para a versão web do projeto hospedado no Firebase Hosting
@@ -16,6 +30,7 @@ https://card-seu-resumo.web.app/#/<br/><br/>
 ## Screenshot do projeto mobile
 
 <img src="https://user-images.githubusercontent.com/75645023/125199105-177dcb80-e23b-11eb-9f59-1b703df3d2ee.png" alt="Imagem 1" width="400"/><br/><br/>
+
 
 ## Screenshot do projeto web
 
