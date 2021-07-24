@@ -8,7 +8,7 @@ Esse é um projeto teste para consumo de Api com GraphQl e Hasura, desenvolvido 
 * Flutter - Dart - GetX
 * Mobile - Android - Web
 * Clean Archtecture - Clean Code
-* Widget Tests
+* Tests: Unit - Widget
 * Pipeline CI/CD - Github Actions
 * MVC
 * API - Postman - GraphQl
